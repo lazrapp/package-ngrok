@@ -1,0 +1,21 @@
+{
+    "environment": [
+        "auth",
+        "region"
+    ],
+    "install": "./ngrok authtoken <%= env.manifest.auth %>",
+    "name": "ngrok",
+    "start": [
+        "./ngrok",
+        [
+            "tcp",
+            "-region",
+            "<%= env.manifest.region %>",
+            "22"
+        ]
+    ],
+    "version": "0.0.1",
+    "hooks": {
+        "pre": "curl -sL https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip -o ngrok.zip && unzip ngrok.zip && rm ngrok.zip"
+    }
+}
